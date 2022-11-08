@@ -8,7 +8,7 @@ export interface RequestStruct {
   body: Record<string, any>;
 }
 
-export async function Req2Struct(request: Request): Promise<RequestStruct> {
+export function Req2Struct(request: Request): RequestStruct {
   const { searchParams, pathname } = new URL(request.url);
   const headers = getHeader(request);
 
@@ -19,7 +19,7 @@ export async function Req2Struct(request: Request): Promise<RequestStruct> {
     headers: headers,
     params: {},
     query: Object.fromEntries(searchParams.entries()),
-    body: request.method !== 'GET' ? await parseBody(request, headers) : {},
+    body: {},
   };
 }
 

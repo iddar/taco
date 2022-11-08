@@ -4,7 +4,7 @@ import { Req2Struct } from './lib/Taco';
 
 async function fetch(this: Server, request: Request, server: Server): Promise<Response> {
   try {
-    const struct = await Req2Struct(request);
+    const struct = Req2Struct(request);
     // const { path, method } = struct;
     // TODO: implement json response here
     return Router(struct);
